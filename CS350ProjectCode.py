@@ -31,6 +31,7 @@ def menu(length1, list1, list2, list3):
         print("Item Name: | Item Category: | Expiration Date:");
         for x in range(length1):
             print(list1[x] + " | " + list2[x] + " | " + list3[x]);
+        filter(length1, list1, list2, list3);
     elif(userChoice == 'B' or userChoice == 'b'):
         y = 1;
         addItem(y, list1, list2, list3);
@@ -47,6 +48,32 @@ def menu(length1, list1, list2, list3):
         userChoice = input("Enter Your Option Here: ");
     menu(length1, list1, list2, list3);
 
+
+def filter(length1, list1, list2, list3):
+    print("This is a Complete List of All Items You Have Added.");
+    print("You Can Sort Through this List by Name, Category, and Expiration Date.");
+    print("Filter By:");
+    print("A) Alphabetical Order (Name)");
+    print("B) Category");
+    print("C) Expiration Date");
+    filtChoice = input("Please Select an Option for Filtering: ");
+    if(filtChoice == 'A' or filtChoice == 'a'):
+        list1.sort();
+        for x in range(length1):
+            print(list1[x] + " | " + list2[x] + " | " + list3[x]);
+        print("Here is the List of Items Sorted in Alphabetical Order.");
+    elif(filtChoice == 'B' or filtChoice == 'b'):
+        categories = [];
+        seen = set();
+        for y in list2:
+            if y not in seen:
+                categories.append(y);
+                seen.add(y);
+        print(categories);
+        print("You Have " + len(categories) + " Unique Categories in Your List of Items.");
+        print("Here is the List of Items Sorted by Category.");
+    elif(filtChoice == 'C' or filtChoice == 'c'):
+        print("Here is the List of Items Sorted by Expiration Date.");
 
 print("Hello! Please Enter An Item Name, Category, & Expiration Date*");
 print("*If your item does not have an expiration date, enter 'N/A'.");
