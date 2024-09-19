@@ -37,12 +37,21 @@ def menu(length1, list1, list2, list3):
         addItem(y, list1, list2, list3);
     elif(userChoice == 'C' or userChoice == 'c'):
         removal = input("Which Item Would You Like to Remove? ");
-        for x in range(length1):
+        found = False;
+        for x in range(length1 - 1, -1, -1):
             if(list1[x] == removal):
-                list1.remove(list1[x]);
-                list2.remove(list2[x]);
-                list3.remove(list3[x]);
-        print("Item Successfully Removed.");
+                del list1[x];
+                del list2[x];
+                del list3[x];
+                found = True;
+        if(found == True):
+            print("Item Successfully Removed.");
+        else:
+            print("The Item You Entered Does Not Appear to be in Your List. Please Try Again.");
+            removal = input("Which Item Would You Like to Remove? ");
+        print("Item Name: | Item Category: | Expiration Date:");
+        for x in range(length1 - 1):
+            print(list1[x] + " | " + list2[x] + " | " + list3[x]);
     else:
         print("Invalid. Please Enter a Letter From A-C/a-c.");
         userChoice = input("Enter Your Option Here: ");
@@ -70,9 +79,13 @@ def filter(length1, list1, list2, list3):
                 categories.append(y);
                 seen.add(y);
         print(categories);
-        print("You Have " + len(categories) + " Unique Categories in Your List of Items.");
+        uc = len(categories)
+        print("You Have %d Unique Categories in Your List of Items." % uc);
         print("Here is the List of Items Sorted by Category.");
     elif(filtChoice == 'C' or filtChoice == 'c'):
+        list3.sort();
+        for x in range(length1):
+            print(list1[x] + " | " + list2[x] + " | " + list3[x]);
         print("Here is the List of Items Sorted by Expiration Date.");
 
 print("Hello! Please Enter An Item Name, Category, & Expiration Date*");
