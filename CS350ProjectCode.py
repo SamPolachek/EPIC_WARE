@@ -26,15 +26,18 @@ def menu(length1, list1, list2, list3):
     print("A) View Item List");
     print("B) Add New Item");
     print("C) Remove Item");
+    print("D) Exit Menu");
     userChoice = input("Enter Your Option Here: ");
     if(userChoice == 'A' or userChoice == 'a'):
         print("Item Name: | Item Category: | Expiration Date:");
         for x in range(length1):
             print(list1[x] + " | " + list2[x] + " | " + list3[x]);
         filter(length1, list1, list2, list3);
+        menu(length1, list1, list2, list3);
     elif(userChoice == 'B' or userChoice == 'b'):
         y = 1;
         addItem(y, list1, list2, list3);
+        menu(length1, list1, list2, list3);
     elif(userChoice == 'C' or userChoice == 'c'):
         removal = input("Which Item Would You Like to Remove? ");
         found = False;
@@ -52,11 +55,10 @@ def menu(length1, list1, list2, list3):
         print("Item Name: | Item Category: | Expiration Date:");
         for x in range(length1 - 1):
             print(list1[x] + " | " + list2[x] + " | " + list3[x]);
+        menu(length1, list1, list2, list3);
     else:
         print("Invalid. Please Enter a Letter From A-C/a-c.");
         userChoice = input("Enter Your Option Here: ");
-    menu(length1, list1, list2, list3);
-
 
 def filter(length1, list1, list2, list3):
     print("This is a Complete List of All Items You Have Added.");
@@ -67,10 +69,10 @@ def filter(length1, list1, list2, list3):
     print("C) Expiration Date");
     filtChoice = input("Please Select an Option for Filtering: ");
     if(filtChoice == 'A' or filtChoice == 'a'):
-        list1.sort();
+        list1, list2, list3 = sort_lists(list1, list2, list3);
+        print("Here is the List of Items Sorted in Alphabetical Order.");
         for x in range(length1):
             print(list1[x] + " | " + list2[x] + " | " + list3[x]);
-        print("Here is the List of Items Sorted in Alphabetical Order.");
     elif(filtChoice == 'B' or filtChoice == 'b'):
         categories = [];
         seen = set();
@@ -83,10 +85,13 @@ def filter(length1, list1, list2, list3):
         print("You Have %d Unique Categories in Your List of Items." % uc);
         print("Here is the List of Items Sorted by Category.");
     elif(filtChoice == 'C' or filtChoice == 'c'):
-        list3.sort();
+        list3, list1, list2 = sort_lists(list3, list1, list2);
         for x in range(length1):
             print(list1[x] + " | " + list2[x] + " | " + list3[x]);
         print("Here is the List of Items Sorted by Expiration Date.");
+
+def sort_lists(list1, list2, list3):
+    return zip(*sorted(zip(list1, list2, list3)));
 
 print("Hello! Please Enter An Item Name, Category, & Expiration Date*");
 print("*If your item does not have an expiration date, enter 'N/A'.");
