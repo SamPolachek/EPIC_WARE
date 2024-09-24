@@ -30,7 +30,7 @@ def menu(length1, list1, list2, list3):
     userChoice = input("Enter Your Option Here: ");
     if(userChoice == 'A' or userChoice == 'a'):
         tabulate(list1, list2, list3);
-        filter(length1, list1, list2, list3);
+        filter(list1, list2, list3);
         menu(length1, list1, list2, list3);
     elif(userChoice == 'B' or userChoice == 'b'):
         y = 1;
@@ -59,7 +59,7 @@ def menu(length1, list1, list2, list3):
         print("Invalid. Please Enter a Letter From A-C/a-c.");
         userChoice = input("Enter Your Option Here: ");
 
-def filter(length1, list1, list2, list3):
+def filter(list1, list2, list3):
     print("This is a Complete List of All Items You Have Added.");
     print("You Can Sort Through this List by Name, Category, and Expiration Date.");
     print("Filter By:");
@@ -99,7 +99,7 @@ def tabulate(list1, list2, list3):
     for x, y, z in zip(list1, list2, list3):
         print(formatting.format(x, y, z));
 
-print("Hello! Please Enter An Item Name, Category, & Expiration Date*");
+print("Welcome to Culinary Cache! Please Enter An Item Name, Category, & Expiration Date*.");
 print("*If your item does not have an expiration date, enter 'N/A'.");
 
 n = 1;
@@ -110,3 +110,5 @@ addItem(n, names, categories, expDates);
 
 x = len(names);
 menu(x, names, categories, expDates);
+
+print("Thank You For Choosing Culinary Cache!");
