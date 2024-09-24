@@ -29,9 +29,7 @@ def menu(length1, list1, list2, list3):
     print("D) Exit Menu");
     userChoice = input("Enter Your Option Here: ");
     if(userChoice == 'A' or userChoice == 'a'):
-        print("Item Name: | Item Category: | Expiration Date:");
-        for x in range(length1):
-            print(list1[x] + " | " + list2[x] + " | " + list3[x]);
+        tabulate(list1, list2, list3);
         filter(length1, list1, list2, list3);
         menu(length1, list1, list2, list3);
     elif(userChoice == 'B' or userChoice == 'b'):
@@ -52,10 +50,11 @@ def menu(length1, list1, list2, list3):
         else:
             print("The Item You Entered Does Not Appear to be in Your List. Please Try Again.");
             removal = input("Which Item Would You Like to Remove? ");
-        print("Item Name: | Item Category: | Expiration Date:");
-        for x in range(length1 - 1):
-            print(list1[x] + " | " + list2[x] + " | " + list3[x]);
+        tabulate(list1, list2, list3);
         menu(length1, list1, list2, list3);
+    elif(userChoice == 'D' or userChoice == 'd'):
+        print("Menu Exit Successful. Have a Good Day!");
+        return False;
     else:
         print("Invalid. Please Enter a Letter From A-C/a-c.");
         userChoice = input("Enter Your Option Here: ");
@@ -71,8 +70,7 @@ def filter(length1, list1, list2, list3):
     if(filtChoice == 'A' or filtChoice == 'a'):
         list1, list2, list3 = sort_lists(list1, list2, list3);
         print("Here is the List of Items Sorted in Alphabetical Order.");
-        for x in range(length1):
-            print(list1[x] + " | " + list2[x] + " | " + list3[x]);
+        tabulate(list1, list2, list3);
     elif(filtChoice == 'B' or filtChoice == 'b'):
         categories = [];
         seen = set();
@@ -83,15 +81,23 @@ def filter(length1, list1, list2, list3):
         print(categories);
         uc = len(categories)
         print("You Have %d Unique Categories in Your List of Items." % uc);
-        print("Here is the List of Items Sorted by Category.");
     elif(filtChoice == 'C' or filtChoice == 'c'):
         list3, list1, list2 = sort_lists(list3, list1, list2);
-        for x in range(length1):
-            print(list1[x] + " | " + list2[x] + " | " + list3[x]);
         print("Here is the List of Items Sorted by Expiration Date.");
+        tabulate(list1, list2, list3);
 
 def sort_lists(list1, list2, list3):
     return zip(*sorted(zip(list1, list2, list3)));
+
+def tabulate(list1, list2, list3):
+    max_width1 = max(len("Item Name:"), max(len(item) for item in list1));
+    max_width2 = max(len("Item Category:"), max(len(item) for item in list2));
+    max_width3 = max(len("Expiration Date:"), max(len(item) for item in list3));
+    formatting = f"{{:<{max_width1}}} | {{:<{max_width2}}} | {{:<{max_width3}}}";
+    print(formatting.format("Item Name:", "Item Category:", "Expiration Date:"));
+    print("-" * (max_width1 + max_width2 + max_width3 + 6));
+    for x, y, z in zip(list1, list2, list3):
+        print(formatting.format(x, y, z));
 
 print("Hello! Please Enter An Item Name, Category, & Expiration Date*");
 print("*If your item does not have an expiration date, enter 'N/A'.");
