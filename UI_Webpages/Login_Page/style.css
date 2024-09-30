@@ -1,0 +1,35 @@
+body {
+    background-color: #FFEBF2;
+}
+
+.d-flex {
+    position: absolute;
+    top: 12rem;
+    left: 8.5rem;
+}
+
+#CreateAccount {
+    max-width: 600px;
+    background-color: #FE86B0;
+    margin-right: 15px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#Login {
+    max-width: 600px;
+    background-color: #FE86B0;
+    margin-left: 15px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#accountBtn {
+    margin-top: 15px;
+    margin-left: 35%;
+}
+
+#loginBtn {
+    margin-top: 15px;
+    margin-left: 40%;
+}
