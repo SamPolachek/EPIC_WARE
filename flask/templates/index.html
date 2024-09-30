@@ -29,7 +29,7 @@
     <main class="container">
       <div class="d-flex justify-content-between p-3 my-3 rounded shadow-sm" style="background-color: #FE86B0;">
         <div class="d-flex flex-row">
-          <img class="me-3" id="food-image" src="images/placeholder.jpg" alt="" width="60" height="60">
+          <img class="me-3" id="food-image" src="{{ url_for('static', filename='images/placeholder.jpg') }}" alt="" width="60" height="60">
           <div class=" align-self-center lh-1">
             <h1 class="h6 mb-0 lh-1">Food Name</h1>
             <h1 class="h6 mb-0 lh-1">Expiration Date</h1>
