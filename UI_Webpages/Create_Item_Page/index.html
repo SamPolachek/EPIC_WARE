@@ -47,7 +47,7 @@
                     </div>
                     <div class="col-12">
                         <label for="inputQuantity" class="form-label">Quantity:</label>
-                        <input type="number" class="form-control" id="inputQuantity">
+                        <input type="number" min="0" oninput="this.value = Math.abs(this.value)" class="form-control" id="inputQuantity">
                     </div>
                     <div class="col-12">
                         <label for="selectLocation" class="form-label">Location:</label>
