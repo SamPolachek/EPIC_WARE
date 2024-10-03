@@ -12,5 +12,15 @@ def index():
     ]
     return render_template('index.html', food_items=food_items)
 
+@app.route('/account')
+def account():
+    # Dummy data for the account page
+    account_info = {
+        "username": "johndoe",
+        "name": "John Doe",
+        "email": "johndoe@example.com"
+    }
+    return render_template('account.html', account_info=account_info)
+
 if __name__ == '__main__':
     app.run(debug=True)

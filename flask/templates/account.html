@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Account Page{% endblock %}
+
+{% block content %}
+  <nav class="navbar justify-content-start navbar-light py-2" style="background-color: #FE86B0;">
+    <img class="me-3" id="food-image" src="{{ url_for('static', filename='images/PFPPlaceholder.jpg') }}" alt="" width="60" height="60" style="margin-right: 15px;">
+    <a class="navbar-brand mr-auto mr-lg-0">Logged in as {{ account_info['username'] }}</a>
+  </nav>
+  <div class="d-flex" style="background-color: #FEAECA;">
+    <button id="editBtn" class="align-self-center">
+      <img src="{{ url_for('static', filename='images/editing.png') }}" alt="" width="40" height="40">
+      Edit
+    </button>
+    <div class="d-flex flex-column mb-3 align-self-center" style="margin-top: 16px;">
+      <div class="p-2"><b>Name:</b> {{ account_info['name'] }}</div>
+      <div class="p-2"><b>Email:</b> {{ account_info['email'] }}</div>
+      <div class="p-2"><b>Password:</b> ********</div> <!-- Placeholder for password -->
+    </div>
+  </div>
+{% endblock %}
