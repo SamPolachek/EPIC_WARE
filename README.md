@@ -8,3 +8,9 @@ This project is inteded to create a desktop application software that will allow
 
 Materials Used:
 The software for this application is being coded via Python. The database that will store user information and items is being created via MongoDB. The front-end will be created utilizing HTML/JavaScript/Flask (Edit this).
+
+Future Features for the remainder of the semester:
+- Complete the sorting items via fields.
+- Add a button that allows the user to switch between normal and night mode.
+- Add a 
+- Have an advanced filter/search system specified by the user 
