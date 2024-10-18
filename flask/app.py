@@ -33,3 +33,8 @@ db=client["cluster0"]
 collection= db["account"]
 collection= db["items"]
 
+document={"name": "John", "age": 30}
+collection.insert_one(document)
+#finding a document
+#result = collection.find_one({"name":"John"})
+#print(result)
