@@ -22,5 +22,9 @@ def account():
     }
     return render_template('account.html', account_info=account_info)
 
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
 if __name__ == '__main__':
     app.run(debug=True)

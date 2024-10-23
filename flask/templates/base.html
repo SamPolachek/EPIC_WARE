@@ -14,13 +14,14 @@
     </nav>
 
     <div class="nav-scroller bg-white shadow-sm">
-        <nav class="nav nav-pills nav-justified" style="background-color: #792359">
-            <!-- Use url_for to generate links for Home and Account -->
-            <a class="nav-item nav-link" style="color: white;" href="{{ url_for('index') }}">Home</a>
-            <a class="nav-item nav-link" style="color: white;" href="#">Create</a>
-            <a class="nav-item nav-link" style="color: white;" href="{{ url_for('account') }}">Account</a>
-        </nav>
+      <nav class="nav nav-pills nav-justified" style="background-color: #792359">
+        <a class="nav-item nav-link" style="color: white;" href="{{ url_for('index') }}">Home</a>
+        <a class="nav-item nav-link" style="color: white;" href="#">Create</a>
+        <a class="nav-item nav-link" style="color: white;" href="{{ url_for('account') }}">Account</a>
+        <a class="nav-item nav-link" style="color: white;" href="{{ url_for('login') }}">Login</a>
+      </nav>
     </div>
+    
 
     <!-- Content Block (for child templates to fill) -->
     <main class="container">
