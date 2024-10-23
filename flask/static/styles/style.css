@@ -34,3 +34,21 @@ body {
     border-radius: 5px;
     margin-bottom: 5px;
 }
+
+#firstForm {
+    margin-left: 4rem;
+}
+
+#secondForm {
+    margin-left: 4rem;
+}
+
+#submitBtn {
+    padding-top: 2rem;
+    padding-left: 46.5%;
+}
+
+#flexShelfStable {
+    border-left: 0px;
+    margin-top: .4rem;
+}
