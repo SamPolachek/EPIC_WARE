@@ -38,16 +38,16 @@ def edit():
 if __name__ == '__main__':
     app.run(debug=True)
 
-import pymongo
-client = pymongo.MongoClient("mongodb+srv://cluster0.tdr34.mongodb.net/")
+#import pymongo
+#client = pymongo.MongoClient("mongodb+srv://cluster0.tdr34.mongodb.net/")
 #access database
-db=client["cluster0"]
+#db=client["cluster0"]
 #access collection
-collection= db["account"]
-collection= db["items"]
+#collection= db["account"]
+#collection= db["items"]
 
-document={"name": "John", "age": 30}
-collection.insert_one(document)
+#document={"name": "John", "age": 30}
+#collection.insert_one(document)
 #finding a document
 #result = collection.find_one({"name":"John"})
 #print(result)
