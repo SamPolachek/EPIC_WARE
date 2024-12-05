@@ -12,20 +12,6 @@ def index():
     ]
     return render_template('index.html', food_items=food_items)
 
-@app.route('/account')
-def account():
-    # Dummy data for the account page
-    account_info = {
-        "username": "johndoe",
-        "name": "John Doe",
-        "email": "johndoe@example.com"
-    }
-    return render_template('account.html', account_info=account_info)
-
-@app.route('/login')
-def login():
-    return render_template('login.html')
-
 @app.route('/create')
 def create():
     return render_template('create.html')
