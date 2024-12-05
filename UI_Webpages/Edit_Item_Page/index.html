@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- StyleSheet CSS-->
+    <link rel="stylesheet" href="style.css">
+    <title>Edit Item Page</title>
+  </head>
+  <body>
+    <nav class="navbar justify-content-center navbar-light py-4" style="background-color: #8E2969;">
+        <a class="navbar-brand mr-auto mr-lg-0" style="color: white;">Culinary Cache</a>
+    </nav>
+
+    <div class="nav-scroller bg-white shadow-sm">
+        <nav class="nav nav-pills nav-justified" style="background-color: #792359">
+            <a class="nav-item nav-link" style="color: white;" href="#">Home</a>
+            <a class="nav-item nav-link" style="color: white;" href="#">Create</a>
+            <a class="nav-item nav-link" style="color: white;" href="#">Account</a>
+        </nav>
+    </div>
+
+    <main class="container" style="max-width: 90%; margin-top: 3%;">
+        <nav class="navbar justify-content-center navbar-light py-2" style="background-color: #FE86B0;">
+            <a class="navbar-brand mr-auto mr-lg-0">Editing an Item</a>
+        </nav>
+        <div class="d-flex justify-content-center align-items-center" style="background-color: #FEAECA;">
+            <!--Image Button-->
+            <div id="fileBtn">
+                <div>Image:</div>
+                <button id="imageBtn" class="align-self-center" style="background-color: #FEAECA;">
+                    <img src="images/file_upload1.png" alt="" width="100" height="100">
+                </button>
+            </div>
+
+            <!--Name, Quanity, and Location Inputs-->
+            <div>
+                <form id="firstForm" class="row g-3" style="max-width: 20rem;">
+                    <div class="col-12">
+                        <label for="inputName" class="form-label">Name:</label>
+                        <input type="text" class="form-control" id="inputName" placeholder="Name">
+                    </div>
+                    <div class="col-12">
+                        <label for="inputQuantity" class="form-label">Quantity:</label>
+                        <input type="number" min="0" oninput="this.value = Math.abs(this.value)" class="form-control" id="inputQuantity" placeholder="0">
+                    </div>
+                    <div class="col-12">
+                        <label for="selectLocation" class="form-label">Location:</label>
+                        <select class="form-control" aria-label="Default select example" id="selectLocation">
+                            <option selected>Open this select menu</option>
+                            <option value="1">Fridge</option>
+                            <option value="2">Freezer</option>
+                            <option value="3">Pantry</option>
+                            <option value="4">Counter</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            
+            <!--Expiration, Brought, and Shelf Stable Inputs-->
+            <div>
+                <form id="secondForm" class="row g-3" style="max-width: 25rem;">
+                    <div class="col-12" style="margin-top: -1.25rem">
+                        <label for="inputExpiration" class="form-label">Expiration Date:</label>
+                        <input type="date" class="form-control" id="inputExpiration">
+                    </div>
+                    <div class="col-12">
+                        <label for="inputBrought" class="form-label">Brought Date:</label>
+                        <input type="date" class="form-control" id="inputBrought">
+                    </div>
+                    <div class="col-12" style="margin-top: 1.5rem;">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexShelfStable">
+                            <label class="form-check-label" for="flexShelfStable">
+                                Shelf Stable?
+                            </label>
+                        </div>                                           
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="btnGroup" class="d-flex justify-content-center" style="background-color: #FEAECA;">
+            <button id="editBtn" type="submit" class="btn btn-primary" style="background-color: #FD4988; ">Edit Item</button>
+            <button id="deleteBtn" type="submit" class="btn btn-primary" style="background-color: #FF0000;">Delete Item</button>
+        </div>
+    </main>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script>
+        // Fetch data from the backend API (Node.js server)
+        fetch('http://localhost:3000/data')
+          .then(response => response.json())
+          .then(data => {
+            const dataList = document.getElementById('data-list');
+            data.forEach(item => {
+              const listItem = document.createElement('li');
+              listItem.textContent = JSON.stringify(item);  // Display item as JSON
+              dataList.appendChild(listItem);
+            });
+          })
+          .catch(error => console.error('Error fetching data:', error));
+      </script>
+  </body>
+</html>

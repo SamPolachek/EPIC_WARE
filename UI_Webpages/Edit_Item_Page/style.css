@@ -1,0 +1,40 @@
+body {
+    background-color: #FFEBF2;
+}
+
+.nav-pills .nav-link {
+    border-radius: 0rem;
+}
+
+.nav-item {
+    border-style: none solid;
+    border-width: 2px;
+    border-color: white;
+}
+
+#firstForm {
+    margin-left: 4rem;
+}
+
+#secondForm {
+    margin-left: 4rem;
+}
+
+#editBtn, #deleteBtn {
+    margin-top: 1rem;
+}
+
+#editBtn {
+    min-width: 8rem;
+    margin-right: 2rem;
+}
+
+#deleteBtn {
+    min-width: 8rem;
+    margin-left: 2rem;
+}
+
+#flexShelfStable {
+    border-left: 0px;
+    margin-top: .4rem;
+}
