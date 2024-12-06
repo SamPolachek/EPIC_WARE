@@ -5,8 +5,9 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     # Dummy data with quantity for each food item
+    a = ["Food 1", "2024-10-01", 6]
     food_items = [
-        {"name": "Food 1", "expiration": "2024-10-01", "quantity": 5},
+        {"name": a[0], "expiration": a[1], "quantity": a[2]},
         {"name": "Food 2", "expiration": "2024-11-15", "quantity": 12},
         {"name": "Food 3", "expiration": "2024-12-20", "quantity": 8}
     ]
