@@ -16,17 +16,19 @@
         <h1 class="h6 mb-0 lh-1">Quantity: {{ item.quantity }}</h1>
       </div>
     </div>
-    <div id="counter">
-      <div id="display">{{ item.quantity }}</div>
-      <div class="btn-group position-relative" role="group" aria-label="Basic mixed styles example">
-        <button type="button" class="btn btn-sm" style="background-color: rgb(30, 206, 30);">Increase</button>
-        <button type="button" class="btn btn-sm" style="background-color: red;">Decrease</button>
+    <div class="d-flex">
+      <div id="counter">
+        <div id="display">{{ item.quantity }}</div>
+        <div class="btn-group position-relative" role="group" aria-label="Basic mixed styles example">
+          <button type="button" class="btn btn-sm" style="background-color: rgb(30, 206, 30);">Increase</button>
+          <button type="button" class="btn btn-sm" style="background-color: red;">Decrease</button>
+        </div>
       </div>
-    </div>
-    <div id="editBtn">
-      <form action="/edit" method="get">
-        <button type="submit" class="btn btn-primary" style="background-color: #FD4988;">Edit Item</button>
-      </form>
+      <div>
+        <form action="/edit" method="get">
+          <button id="editPageBtn" type="submit" class="btn btn-primary" style="background-color: #FD4988;">Edit Item</button>
+        </form>
+      </div>
     </div>
   </div>
   {% endfor %}

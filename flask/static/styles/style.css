@@ -17,6 +17,10 @@ body {
     max-width: 1400px;
 }
 
+#editPageBtn {
+    padding: 15px;
+}
+
 #editBtn {
     background-color: #FE86B0; 
     border-radius: 5px;
