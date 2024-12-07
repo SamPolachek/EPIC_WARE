@@ -4,66 +4,60 @@
 
 {% block content %}
 <main class="container" style="max-width: 90%; margin-top: 3%;">
-      <nav class="navbar justify-content-center navbar-light py-2" style="background-color: #FE86B0;">
-          <a class="navbar-brand mr-auto mr-lg-0">Add a Food Item</a>
-      </nav>
-      <div class="d-flex justify-content-center align-items-center" style="background-color: #FEAECA;">
-          <!--Image Button-->
-          <div id="fileBtn">
-              <div>Image:</div>
-              <button id="editBtn" class="align-self-center" style="background-color: #FEAECA;">
-                  <img src="{{ url_for('static', filename='images/file_upload1.png') }}" alt="" width="100" height="100">
-              </button>
-          </div>
+    <nav class="navbar justify-content-center navbar-light py-2" style="background-color: #FE86B0;">
+        <a class="navbar-brand mr-auto mr-lg-0">Add a Food Item</a>
+    </nav>
 
-          <!--Name, Quantity, and Location Inputs-->
-          <div>
-              <form id="firstForm" class="row g-3" style="max-width: 20rem;">
-                  <div class="col-12">
-                      <label for="inputName" class="form-label">Name:</label>
-                      <input type="text" class="form-control" id="inputName">
-                  </div>
-                  <div class="col-12">
-                      <label for="inputQuantity" class="form-label">Quantity:</label>
-                      <input type="number" min="0" oninput="this.value = Math.abs(this.value)" class="form-control" id="inputQuantity">
-                  </div>
-                  <div class="col-12">
-                      <label for="selectLocation" class="form-label">Location:</label>
-                      <select class="form-control" aria-label="Default select example" id="selectLocation">
-                          <option selected>Open this select menu</option>
-                          <option value="1">Fridge</option>
-                          <option value="2">Freezer</option>
-                          <option value="3">Pantry</option>
-                          <option value="4">Counter</option>
-                      </select>
-                  </div>
-              </form>
-          </div>
+    <div class="d-flex justify-content-center align-items-center" style="background-color: #FEAECA;">
+        <!-- Form for Adding Item -->
+        <form action="{{ url_for('create') }}" method="POST" class="row g-3" style="max-width: 20rem;">
+            <!-- Name, Quantity, Location Inputs -->
+            <div class="col-12">
+                <label for="inputName" class="form-label">Name:</label>
+                <input type="text" class="form-control" id="inputName" name="name" required>
+            </div>
+            <div class="col-12">
+                <label for="inputQuantity" class="form-label">Quantity:</label>
+                <input type="number" min="0" oninput="this.value = Math.abs(this.value)" class="form-control" id="inputQuantity" name="quantity" required>
+            </div>
+            <div class="col-12">
+                <label for="selectLocation" class="form-label">Location:</label>
+                <select class="form-control" id="selectLocation" name="location" required>
+                    <option selected>Open this select menu</option>
+                    <option value="1">Fridge</option>
+                    <option value="2">Freezer</option>
+                    <option value="3">Pantry</option>
+                    <option value="4">Counter</option>
+                </select>
+            </div>
 
-          <!--Expiration, Brought, and Shelf Stable Inputs-->
-          <div>
-              <form id="secondForm" class="row g-3" style="max-width: 25rem;">
-                  <div class="col-12" style="margin-top: -1.25rem">
-                      <label for="inputExpiration" class="form-label">Expiration Date:</label>
-                      <input type="date" class="form-control" id="inputExpiration">
-                  </div>
-                  <div class="col-12">
-                      <label for="inputBrought" class="form-label">Brought Date</label>
-                      <input type="date" class="form-control" id="inputBrought">
-                  </div>
-                  <div class="col-12" style="margin-top: 1.5rem;">
-                      <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexShelfStable">
-                          <label class="form-check-label" for="flexShelfStable">
-                              Shelf Stable?
-                          </label>
-                      </div>                                           
-                  </div>
-              </form>
-          </div>
-      </div>
-      <div id="submitBtn" style="background-color: #FEAECA;">
-          <button type="submit" class="btn btn-primary" style="background-color: #FD4988;">Create Item</button>
-      </div>
-  </main>
+            <!-- Expiration, Brought Date, and Shelf Stable Inputs -->
+            <div class="col-12" style="margin-top: -1.25rem">
+                <label for="inputExpiration" class="form-label">Expiration Date:</label>
+                <input type="date" class="form-control" id="inputExpiration" name="expiration" required>
+            </div>
+            <div class="col-12">
+                <label for="inputBrought" class="form-label">Brought Date</label>
+                <input type="date" class="form-control" id="inputBrought" name="bought_date" required>
+            </div>
+            <div class="col-12" style="margin-top: 1.5rem;">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="True" id="flexShelfStable" name="shelf_stable">
+                    <label class="form-check-label" for="flexShelfStable">
+                        Shelf Stable?
+                    </label>
+                </div>                                           
+            </div>
+
+            <!-- Submit Button -->
+            <form action="{{ url_for('create') }}" method="POST" class="row g-3" style="max-width: 20rem;">
+                <!-- Form fields here -->
+            
+                <div id="submitBtn" style="background-color: #FEAECA;">
+                    <button type="submit" class="btn btn-primary" style="background-color: #FD4988;">Create Item</button>
+                </div>
+            </form>
+        </form>
+    </div>
+</main>
 {% endblock %}

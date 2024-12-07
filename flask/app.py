@@ -21,8 +21,35 @@ def index():
     return render_template('index.html', food_items=food_items)
 
 
-@app.route('/create')
+@app.route('/create', methods=['GET', 'POST'])
 def create():
+    if request.method == 'POST':
+        # Get data from the form
+        name = request.form['name']
+        quantity = int(request.form['quantity'])
+        expiration = request.form['expiration']
+        location = request.form['location']
+        bought_date = request.form['bought_date']
+        shelf_stable = 'shelf_stable' in request.form  # Check if checkbox was ticked
+
+        # Create a new food item dictionary
+        new_item = {
+            "name": name,
+            "quantity": quantity,
+            "expiration": expiration,
+            "location": location,
+            "bought_date": bought_date,
+            "shelf_stable": shelf_stable
+        }
+
+        # Add the new item to the session
+        food_items = session['food_items']
+        food_items.append(new_item)
+        session['food_items'] = food_items  # Update session with new list
+
+        # Redirect back to the index page after adding the item
+        return redirect(url_for('index'))
+
     return render_template('create.html')
 
 # Change this later to work with /edit/item
