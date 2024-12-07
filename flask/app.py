@@ -41,6 +41,18 @@ def edit(item_index):
 
     return render_template('edit.html', item=item, item_index=item_index)
 
+@app.route('/delete_item/<int:item_index>', methods=['POST'])
+def delete_item(item_index):
+    food_items = session['food_items']
+    
+    if 0 <= item_index < len(food_items):
+        # Remove the item from the list
+        del food_items[item_index]
+        session['food_items'] = food_items  # Update session after deletion
+
+    # Redirect back to the home page after deleting the item
+    return redirect(url_for('index'))
+
 @app.route('/increase/<int:item_index>', methods=['POST'])
 def increase(item_index):
     # Ensure food_items exists in session
