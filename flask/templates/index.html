@@ -20,8 +20,12 @@
       <div id="counter">
         <div id="display">{{ item.quantity }}</div>
         <div class="btn-group position-relative" role="group" aria-label="Basic mixed styles example">
-          <button type="button" class="btn btn-sm" style="background-color: rgb(30, 206, 30);">Increase</button>
-          <button type="button" class="btn btn-sm" style="background-color: red;">Decrease</button>
+          <form method="POST" action="{{ url_for('increase', item_index=loop.index0) }}">
+            <button type="submit" class="btn btn-sm" style="background-color: rgb(30, 206, 30);">Increase</button>
+          </form>
+          <form method="POST" action="{{ url_for('decrease', item_index=loop.index0) }}">
+            <button type="submit" class="btn btn-sm" style="background-color: red;">Decrease</button>
+          </form>
         </div>
       </div>
       <div>
@@ -34,3 +38,4 @@
   {% endfor %}
 </main>
 {% endblock %}
+
