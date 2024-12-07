@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, session
+from flask import Flask, render_template, redirect, url_for, session, request
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
@@ -26,9 +26,20 @@ def create():
     return render_template('create.html')
 
 # Change this later to work with /edit/item
-@app.route('/edit')
-def edit():
-    return render_template('edit.html')
+@app.route('/edit/<int:item_index>', methods=['GET', 'POST'])
+def edit(item_index):
+    food_items = session['food_items']
+    item = food_items[item_index]
+
+    if request.method == 'POST':
+        # Update the food item with the form data
+        item['name'] = request.form['name']
+        item['expiration'] = request.form['expiration']
+        item['quantity'] = int(request.form['quantity'])
+        session['food_items'] = food_items  # Update session
+        return redirect(url_for('index'))
+
+    return render_template('edit.html', item=item, item_index=item_index)
 
 @app.route('/increase/<int:item_index>', methods=['POST'])
 def increase(item_index):

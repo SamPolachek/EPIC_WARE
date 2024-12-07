@@ -29,7 +29,7 @@
         </div>
       </div>
       <div>
-        <form action="/edit" method="get">
+        <form action="{{ url_for('edit', item_index=loop.index0) }}" method="get">
           <button id="editPageBtn" type="submit" class="btn btn-primary" style="background-color: #FD4988;">Edit Item</button>
         </form>
       </div>

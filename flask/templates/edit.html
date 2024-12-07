@@ -5,8 +5,9 @@
 {% block content %}
  <main class="container" style="max-width: 90%; margin-top: 3%;">
       <nav class="navbar justify-content-center navbar-light py-2" style="background-color: #FE86B0;">
-          <a class="navbar-brand mr-auto mr-lg-0">Editing an Item</a>
+          <a class="navbar-brand mr-auto mr-lg-0">Editing {{ item.name }}</a>
       </nav>
+
       <div class="d-flex justify-content-center align-items-center" style="background-color: #FEAECA;">
           <!--Image Button-->
           <div id="fileBtn">
@@ -17,54 +18,59 @@
           </div>
 
           <!--Name, Quanity, and Location Inputs-->
-          <div>
-              <form id="firstForm" class="row g-3" style="max-width: 20rem;">
-                  <div class="col-12">
-                      <label for="inputName" class="form-label">Name:</label>
-                      <input type="text" class="form-control" id="inputName" placeholder="Name">
-                  </div>
-                  <div class="col-12">
-                      <label for="inputQuantity" class="form-label">Quantity:</label>
-                      <input type="number" min="0" oninput="this.value = Math.abs(this.value)" class="form-control" id="inputQuantity" placeholder="0">
-                  </div>
-                  <div class="col-12">
-                      <label for="selectLocation" class="form-label">Location:</label>
-                      <select class="form-control" aria-label="Default select example" id="selectLocation">
-                          <option selected>Open this select menu</option>
-                          <option value="1">Fridge</option>
-                          <option value="2">Freezer</option>
-                          <option value="3">Pantry</option>
-                          <option value="4">Counter</option>
-                      </select>
-                  </div>
-              </form>
-          </div>
+           <!-- Form for editing item details -->
+  <form action="{{ url_for('edit', item_index=item_index) }}" method="POST">
+    <div class="d-flex justify-content-center align-items-center" style="background-color: #FEAECA;">
+      <!-- Inputs for Item Details -->
+      <div>
+        <div class="col-12">
+          <label for="name" class="form-label">Name:</label>
+          <input type="text" class="form-control" id="name" name="name" value="{{ item.name }}">
+        </div>
 
-          <!--Expiration, Brought, and Shelf Stable Inputs-->
-          <div>
-              <form id="secondForm" class="row g-3" style="max-width: 25rem;">
-                  <div class="col-12" style="margin-top: -1.25rem">
-                      <label for="inputExpiration" class="form-label">Expiration Date:</label>
-                      <input type="date" class="form-control" id="inputExpiration">
-                  </div>
-                  <div class="col-12">
-                      <label for="inputBrought" class="form-label">Brought Date:</label>
-                      <input type="date" class="form-control" id="inputBrought">
-                  </div>
-                  <div class="col-12" style="margin-top: 1.5rem;">
-                      <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexShelfStable">
-                          <label class="form-check-label" for="flexShelfStable">
-                              Shelf Stable?
-                          </label>
-                      </div>                                           
-                  </div>
-              </form>
+        <div class="col-12">
+          <label for="quantity" class="form-label">Quantity:</label>
+          <input type="number" class="form-control" id="quantity" name="quantity" value="{{ item.quantity }}">
+        </div>
+
+        <div class="col-12">
+          <label for="expiration" class="form-label">Expiration Date:</label>
+          <input type="date" class="form-control" id="expiration" name="expiration" value="{{ item.expiration }}">
+        </div>
+
+        <!-- Location Dropdown -->
+        <div class="col-12">
+          <label for="selectLocation" class="form-label">Location:</label>
+          <select class="form-control" id="selectLocation" name="location">
+            <option value="1" {% if item.location == '1' %}selected{% endif %}>Fridge</option>
+            <option value="2" {% if item.location == '2' %}selected{% endif %}>Freezer</option>
+            <option value="3" {% if item.location == '3' %}selected{% endif %}>Pantry</option>
+            <option value="4" {% if item.location == '4' %}selected{% endif %}>Counter</option>
+          </select>
+        </div>
+
+        <!-- Bought Date -->
+        <div class="col-12">
+          <label for="inputBought" class="form-label">Bought Date:</label>
+          <input type="date" class="form-control" id="inputBought" name="bought_date" value="{{ item.bought_date }}">
+        </div>
+
+        <!-- Shelf Stable Checkbox -->
+        <div class="col-12" style="margin-top: 1.5rem;">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="flexShelfStable" name="shelf_stable" {% if item.shelf_stable %}checked{% endif %}>
+            <label class="form-check-label" for="flexShelfStable">
+              Shelf Stable?
+            </label>
           </div>
+        </div>
       </div>
-      <div id="btnGroup" class="d-flex justify-content-center" style="background-color: #FEAECA;">
-          <button id="editBtn" type="submit" class="btn btn-primary" style="background-color: #FD4988;">Edit Item</button>
-          <button id="deleteBtn" type="submit" class="btn btn-primary" style="background-color: #FF0000;">Delete Item</button>
-      </div>
-  </main>
+    </div>
+
+    <!-- Submit button -->
+    <div class="d-flex justify-content-center" style="background-color: #FEAECA;">
+      <button type="submit" class="btn btn-primary" style="background-color: #FD4988;">Save Changes</button>
+    </div>
+  </form>
+</main>
 {% endblock %}
