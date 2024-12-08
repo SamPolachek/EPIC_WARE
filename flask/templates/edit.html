@@ -3,6 +3,7 @@
 {% block title %}Edit Item Page{% endblock %}
 
 {% block content %}
+<!--Add title editing and then the name of product editing-->
  <main class="container" style="max-width: 90%; margin-top: 3%;">
       <nav class="navbar justify-content-center navbar-light py-2" style="background-color: #FE86B0;">
           <a class="navbar-brand mr-auto mr-lg-0">Editing {{ item.name }}</a>
@@ -21,7 +22,7 @@
            <!-- Form for editing item details -->
   <form action="{{ url_for('edit', item_index=item_index) }}" method="POST">
     <div class="d-flex justify-content-center align-items-center" style="background-color: #FEAECA;">
-      <!-- Inputs for Item Details -->
+      <!-- Inputs for name quantitity and expiration date -->
       <div>
         <div class="col-12">
           <label for="name" class="form-label">Name:</label>

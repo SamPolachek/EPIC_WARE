@@ -3,6 +3,7 @@
 {% block title %}Create Item Page{% endblock %}
 
 {% block content %}
+<!--Title of adding item page-->
 <main class="container" style="max-width: 90%; margin-top: 3%;">
     <nav class="navbar justify-content-center navbar-light py-2" style="background-color: #FE86B0;">
         <a class="navbar-brand mr-auto mr-lg-0">Add a Food Item</a>
@@ -51,8 +52,6 @@
 
             <!-- Submit Button -->
             <form action="{{ url_for('create') }}" method="POST" class="row g-3" style="max-width: 20rem;">
-                <!-- Form fields here -->
-            
                 <div id="submitBtn" style="background-color: #FEAECA;">
                     <button type="submit" class="btn btn-primary" style="background-color: #FD4988;">Create Item</button>
                 </div>
