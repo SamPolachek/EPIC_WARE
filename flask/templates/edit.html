@@ -10,20 +10,12 @@
   </nav>
 
   <div class="d-flex justify-content-center align-items-center" style="background-color: #FEAECA;">
-    <!--Image Button-->
-    <div id="fileBtn">
-        <div>Image:</div>
-        <button id="imageBtn" class="align-self-center" style="background-color: #FEAECA;">
-            <img src="{{ url_for('static', filename='images/file_upload1.png') }}" alt="" width="100" height="100">
-        </button>
-    </div>
-
     <!--Name, Quanity, and Location Inputs-->
     <!-- Form for editing item details -->
     <form action="{{ url_for('edit', item_index=item_index) }}" method="POST">
       <div class="d-flex justify-content-center align-items-center" style="background-color: #FEAECA;">
         <!-- Inputs for name quantitity and expiration date -->
-        <div>
+        <div style="min-width: 20rem;">
           <div class="col-12">
             <label for="name" class="form-label">Name:</label>
             <input type="text" class="form-control" id="name" name="name" value="{{ item.name }}">
@@ -38,9 +30,11 @@
             <label for="expiration" class="form-label">Expiration Date:</label>
             <input type="date" class="form-control" id="expiration" name="expiration" value="{{ item.expiration }}">
           </div>
+        </div>
 
+        <div style="min-width: 20rem;">
           <!-- Location Dropdown -->
-          <div class="col-12">
+          <div class="col-12" style="margin-top: -1.4em;">
             <label for="selectLocation" class="form-label">Location:</label>
             <select class="form-control" id="selectLocation" name="location">
               <option value="1" {% if item.location == '1' %}selected{% endif %}>Fridge</option>
@@ -70,13 +64,13 @@
 
       <!-- Submit button -->
       <div class="d-flex justify-content-center" style="background-color: #FEAECA;">
-        <button type="submit" class="btn btn-primary" style="background-color: #FD4988;">Save Changes</button>
+        <button type="submit" class="btn btn-primary" style="background-color: #FD4988; margin-top: 2rem; margin-left: 8rem;">Save Changes</button>
       </div>
     </form>
     
     <div class="d-flex justify-content-center mt-3">
       <form action="{{ url_for('delete_item', item_index=item_index) }}" method="POST">
-        <button type="submit" class="btn btn-danger" style="background-color: #FD4988;">Delete Item</button>
+        <button type="submit" class="btn btn-danger" style="background-color: #f72d29; height: 80px; margin-left: 1rem; margin-bottom: 3rem;">Delete Item</button>
       </form>
     </div>
   </div>

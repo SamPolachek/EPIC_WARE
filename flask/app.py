@@ -8,9 +8,9 @@ def initialize_food_items():
     # Check if 'food_items' exists in the session; if not display the dummy info
     if 'food_items' not in session:
         session['food_items'] = [
-            {"name": "Food 1", "expiration": "2024-10-01", "quantity": 6},
-            {"name": "Food 2", "expiration": "2024-11-15", "quantity": 12},
-            {"name": "Food 3", "expiration": "2024-12-20", "quantity": 8}
+            {"name": "Cream Cheese", "expiration": "2025-01-15", "quantity": 2},
+            {"name": "Chicken Noodle Soup", "expiration": "2025-03-01", "quantity": 10},
+            {"name": "Apples", "expiration": "2025-02-21", "quantity": 12}
         ]
 
 
