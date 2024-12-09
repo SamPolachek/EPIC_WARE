@@ -3,81 +3,82 @@
 {% block title %}Edit Item Page{% endblock %}
 
 {% block content %}
-<!--Add title editing and then the name of product editing-->
- <main class="container" style="max-width: 90%; margin-top: 3%;">
-      <nav class="navbar justify-content-center navbar-light py-2" style="background-color: #FE86B0;">
-          <a class="navbar-brand mr-auto mr-lg-0">Editing {{ item.name }}</a>
-      </nav>
+<main class="container" style="max-width: 90%; margin-top: 3%;">
+  <!--Header-->
+  <nav class="navbar justify-content-center navbar-light py-2" style="background-color: #FE86B0;">
+    <a class="navbar-brand mr-auto mr-lg-0">Editing {{ item.name }}</a>
+  </nav>
 
+  <div class="d-flex justify-content-center align-items-center" style="background-color: #FEAECA;">
+    <!--Image Button-->
+    <div id="fileBtn">
+        <div>Image:</div>
+        <button id="imageBtn" class="align-self-center" style="background-color: #FEAECA;">
+            <img src="{{ url_for('static', filename='images/file_upload1.png') }}" alt="" width="100" height="100">
+        </button>
+    </div>
+
+    <!--Name, Quanity, and Location Inputs-->
+    <!-- Form for editing item details -->
+    <form action="{{ url_for('edit', item_index=item_index) }}" method="POST">
       <div class="d-flex justify-content-center align-items-center" style="background-color: #FEAECA;">
-          <!--Image Button-->
-          <div id="fileBtn">
-              <div>Image:</div>
-              <button id="imageBtn" class="align-self-center" style="background-color: #FEAECA;">
-                  <img src="{{ url_for('static', filename='images/file_upload1.png') }}" alt="" width="100" height="100">
-              </button>
+        <!-- Inputs for name quantitity and expiration date -->
+        <div>
+          <div class="col-12">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{ item.name }}">
           </div>
 
-          <!--Name, Quanity, and Location Inputs-->
-           <!-- Form for editing item details -->
-  <form action="{{ url_for('edit', item_index=item_index) }}" method="POST">
-    <div class="d-flex justify-content-center align-items-center" style="background-color: #FEAECA;">
-      <!-- Inputs for name quantitity and expiration date -->
-      <div>
-        <div class="col-12">
-          <label for="name" class="form-label">Name:</label>
-          <input type="text" class="form-control" id="name" name="name" value="{{ item.name }}">
-        </div>
+          <div class="col-12">
+            <label for="quantity" class="form-label">Quantity:</label>
+            <input type="number" class="form-control" id="quantity" name="quantity" value="{{ item.quantity }}">
+          </div>
 
-        <div class="col-12">
-          <label for="quantity" class="form-label">Quantity:</label>
-          <input type="number" class="form-control" id="quantity" name="quantity" value="{{ item.quantity }}">
-        </div>
+          <div class="col-12">
+            <label for="expiration" class="form-label">Expiration Date:</label>
+            <input type="date" class="form-control" id="expiration" name="expiration" value="{{ item.expiration }}">
+          </div>
 
-        <div class="col-12">
-          <label for="expiration" class="form-label">Expiration Date:</label>
-          <input type="date" class="form-control" id="expiration" name="expiration" value="{{ item.expiration }}">
-        </div>
+          <!-- Location Dropdown -->
+          <div class="col-12">
+            <label for="selectLocation" class="form-label">Location:</label>
+            <select class="form-control" id="selectLocation" name="location">
+              <option value="1" {% if item.location == '1' %}selected{% endif %}>Fridge</option>
+              <option value="2" {% if item.location == '2' %}selected{% endif %}>Freezer</option>
+              <option value="3" {% if item.location == '3' %}selected{% endif %}>Pantry</option>
+              <option value="4" {% if item.location == '4' %}selected{% endif %}>Counter</option>
+            </select>
+          </div>
 
-        <!-- Location Dropdown -->
-        <div class="col-12">
-          <label for="selectLocation" class="form-label">Location:</label>
-          <select class="form-control" id="selectLocation" name="location">
-            <option value="1" {% if item.location == '1' %}selected{% endif %}>Fridge</option>
-            <option value="2" {% if item.location == '2' %}selected{% endif %}>Freezer</option>
-            <option value="3" {% if item.location == '3' %}selected{% endif %}>Pantry</option>
-            <option value="4" {% if item.location == '4' %}selected{% endif %}>Counter</option>
-          </select>
-        </div>
+          <!-- Bought Date -->
+          <div class="col-12">
+            <label for="inputBought" class="form-label">Bought Date:</label>
+            <input type="date" class="form-control" id="inputBought" name="bought_date" value="{{ item.bought_date }}">
+          </div>
 
-        <!-- Bought Date -->
-        <div class="col-12">
-          <label for="inputBought" class="form-label">Bought Date:</label>
-          <input type="date" class="form-control" id="inputBought" name="bought_date" value="{{ item.bought_date }}">
-        </div>
-
-        <!-- Shelf Stable Checkbox -->
-        <div class="col-12" style="margin-top: 1.5rem;">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="flexShelfStable" name="shelf_stable" {% if item.shelf_stable %}checked{% endif %}>
-            <label class="form-check-label" for="flexShelfStable">
-              Shelf Stable?
-            </label>
+          <!-- Shelf Stable Checkbox -->
+          <div class="col-12" style="margin-top: 1.5rem;">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="flexShelfStable" name="shelf_stable" {% if item.shelf_stable %}checked{% endif %}>
+              <label class="form-check-label" for="flexShelfStable">
+                Shelf Stable?
+              </label>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Submit button -->
-    <div class="d-flex justify-content-center" style="background-color: #FEAECA;">
-      <button type="submit" class="btn btn-primary" style="background-color: #FD4988;">Save Changes</button>
-    </div>
-  </form>
-  <div class="d-flex justify-content-center mt-3">
-    <form action="{{ url_for('delete_item', item_index=item_index) }}" method="POST">
-      <button type="submit" class="btn btn-danger" style="background-color: #FD4988;">Delete Item</button>
+      <!-- Submit button -->
+      <div class="d-flex justify-content-center" style="background-color: #FEAECA;">
+        <button type="submit" class="btn btn-primary" style="background-color: #FD4988;">Save Changes</button>
+      </div>
     </form>
+    
+    <div class="d-flex justify-content-center mt-3">
+      <form action="{{ url_for('delete_item', item_index=item_index) }}" method="POST">
+        <button type="submit" class="btn btn-danger" style="background-color: #FD4988;">Delete Item</button>
+      </form>
+    </div>
   </div>
-
 </main>
 {% endblock %}
