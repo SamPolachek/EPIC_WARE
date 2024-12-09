@@ -1,0 +1,60 @@
+body {
+    background-color: #FFEBF2;
+}
+
+.nav-pills .nav-link {
+    border-radius: 0rem;
+}
+
+.nav-item {
+    border-style: none solid;
+    border-width: 2px;
+    border-color: white;
+}
+
+.container {
+    margin-top: 5rem;
+    max-width: 1400px;
+}
+
+#editPageBtn {
+    padding: 15px;
+    margin-top: .2rem;
+    margin-left: 1rem;
+}
+
+#editBtn {
+    background-color: #FE86B0; 
+    border-radius: 5px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+#food-image {
+    padding-right: 5px;
+}
+
+#display {
+    background-color: white;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+#firstForm {
+    margin-left: 4rem;
+}
+
+#secondForm {
+    margin-left: 4rem;
+}
+
+#submitBtn {
+    padding-top: 2rem;
+    padding-left: 46.5%;
+}
+
+#flexShelfStable {
+    border-left: 0px;
+    margin-top: .4rem;
+}

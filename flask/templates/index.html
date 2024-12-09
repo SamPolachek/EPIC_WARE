@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+<main class="container">
+  <!-- Loop over food items and display them -->
+  {% for item in food_items %}
+  <div class="d-flex justify-content-between p-3 my-3 rounded shadow-sm" style="background-color: #FE86B0;">
+    <div class="d-flex flex-row">
+      <img class="me-3" id="food-image" src="{{ url_for('static', filename='images/placeholder.jpg') }}" alt="" width="60" height="60">
+      <div class="align-self-center lh-1">
+        <h1 class="h6 mb-0 lh-1">{{ item.name }}</h1>
+        <h1 class="h6 mb-0 lh-1">{{ item.expiration }}</h1>
+        <!-- Display quantity -->
+        <h1 class="h6 mb-0 lh-1">Quantity: {{ item.quantity }}</h1>
+      </div>
+    </div>
+    <div class="d-flex">
+      <div id="counter">
+        <div id="display">{{ item.quantity }}</div>
+        <div class="btn-group position-relative" role="group" aria-label="Basic mixed styles example">
+          <form method="POST" action="{{ url_for('increase', item_index=loop.index0) }}">
+            <button type="submit" class="btn btn-sm" style="background-color: rgb(30, 206, 30);">Increase</button>
+          </form>
+          <form method="POST" action="{{ url_for('decrease', item_index=loop.index0) }}">
+            <button type="submit" class="btn btn-sm" style="background-color: red;">Decrease</button>
+          </form>
+        </div>
+      </div>
+      <div>
+        <form action="{{ url_for('edit', item_index=loop.index0) }}" method="get">
+          <button id="editPageBtn" type="submit" class="btn btn-primary" style="background-color: #FD4988;">Edit Item</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</main>
+{% endblock %}
+
