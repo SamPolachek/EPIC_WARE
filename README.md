@@ -16,3 +16,5 @@ The website should be up and running as a website which can be visited by using 
 https://epicware.vercel.app/create
 -- or --
 https://epicware-javier-alfonso-arroyo-solis-projects.vercel.app/
+
+Everything for the Project Part 2 submission should be within the Main branch and no other branches.
